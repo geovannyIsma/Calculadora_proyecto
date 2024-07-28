@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Científica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.75rem;
+        }
+
+        .span-two {
+            grid-column: span 2;
+        }
+
+        .span-three {
+            grid-column: span 3;
+        }
+
+        .btn {
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<div class="w-full max-w-lg mx-auto bg-white rounded-lg shadow-lg p-3">
+    <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Calculadora Científica</h1>
+    <div class="bg-gray-800 rounded-lg p-4 mb-4 text-right text-xl text-white" id="display">
+        <div id="full-expression" class="text-sm text-gray-400"></div>
+        <div id="current-value">0</div>
+    </div>
+    <div id="calculator" class="calculator-grid">
+        <!-- Scientific functions -->
+        <button class="btn bg-blue-500 text-white" data-value="sqrt">√</button>
+        <button class="btn bg-blue-500 text-white" data-value="power">^</button>
+        <button class="btn bg-blue-500 text-white" data-value="log">log</button>
+        <button class="btn bg-blue-500 text-white" data-value="ln">ln</button>
+        <button class="btn bg-blue-500 text-white" data-value="exp">exp</button>
+        <button class="btn bg-blue-500 text-white" data-value="sin">sin</button>
+        <button class="btn bg-blue-500 text-white" data-value="cos">cos</button>
+        <button class="btn bg-blue-500 text-white" data-value="tan">tan</button>
+        <button class="btn bg-blue-500 text-white" data-value="asin">asin</button>
+        <button class="btn bg-blue-500 text-white" data-value="acos">acos</button>
+        <button class="btn bg-blue-500 text-white" data-value="atan">atan</button>
+        <button class="btn bg-blue-500 text-white" data-value="sinh">sinh</button>
+        <button class="btn bg-blue-500 text-white" data-value="cosh">cosh</button>
+        <button class="btn bg-blue-500 text-white" data-value="tanh">tanh</button>
+        <button class="btn bg-blue-500 text-white" data-value="factorial">n!</button>
+        <button class="btn bg-blue-500 text-white" data-value="mod">%</button>
+        <button class="btn bg-blue-500 text-white" data-value="power_of_ten">10^x</button>
+        <button class="btn bg-blue-500 text-white" data-value="inverse">1/x</button>
+        <button class="btn bg-yellow-500 text-white" data-value="backspace">⌫</button>
+        <button class="btn bg-red-500 text-white" data-value="clear">C</button>
+        
+        <!-- Numbers -->
+        <button class="btn bg-gray-300 text-gray-800" data-value="7">7</button>
+        <button class="btn bg-gray-300 text-gray-800" data-value="8">8</button>
+        <button class="btn bg-gray-300 text-gray-800" data-value="9">9</button>
+        <button class="btn bg-orange-500 text-white" data-value="multiply">*</button>
+        <button class="btn bg-orange-500 text-white" data-value="divide">/</button>
+        <button class="btn bg-gray-300 text-gray-800" data-value="4">4</button>
+        <button class="btn bg-gray-300 text-gray-800" data-value="5">5</button>
+        <button class="btn bg-gray-300 text-gray-800" data-value="6">6</button>
+        <button class="btn bg-orange-500 text-white" data-value="add">+</button>
+        <button class="btn bg-orange-500 text-white" data-value="subtract">-</button>
+        <button class="btn bg-gray-300 text-gray-800" data-value="1">1</button>
+        <button class="btn bg-gray-300 text-gray-800" data-value="2">2</button>
+        <button class="btn bg-gray-300 text-gray-800" data-value="3">3</button>
+        <button class="btn bg-green-500 text-white span-two" data-value="equals">=</button>
+        <button class="btn bg-gray-300 text-gray-800 span-two" data-value="0">0</button>
+        <button class="btn bg-gray-300 text-gray-800" data-value="dot">.</button>
+    </div>
+    <div id="result" class="mt-4 text-center text-xl"></div>
+</div>
+
+<script>
+    let currentExpression = '';
+    let currentValue = '0';
+    let resultCalculated = false;
+
+    function updateDisplay() {
+        document.getElementById('full-expression').textContent = currentExpression;
+        document.getElementById('current-value').textContent = currentValue;
+    }
+
+    function handleNumber(number) {
+        if (resultCalculated) {
+            currentExpression = '';
+            currentValue = number;
+            resultCalculated = false;
+        } else {
+            if (currentValue === '0') {
+                currentValue = number;
+            } else {
+                currentValue += number;
+            }
+        }
+        updateDisplay();
+    }
+
+    function handleOperation(operation) {
+        if (resultCalculated) {
+            currentExpression = currentValue;
+            resultCalculated = false;
+        } else {
+            currentExpression += currentValue;
+        }
+
+        switch (operation) {
+            case 'add':
+                currentExpression += ' + ';
+                break;
+            case 'subtract':
+                currentExpression += ' - ';
+                break;
+            case 'multiply':
+                currentExpression += ' * ';
+                break;
+            case 'divide':
+                currentExpression += ' / ';
+                break;
+            case 'power':
+                currentExpression += ' ^ ';
+                break;
+            case 'mod':
+                currentExpression += ' % ';
+                break;
+            default:
+                return;
+        }
+
+        currentValue = '0';
+        updateDisplay();
+    }
+
+    function handleUnaryOperation(operation) {
+        let value = parseFloat(currentValue);
+        let displayExpression = '';
+
+        switch (operation) {
+            case 'sqrt':
+                displayExpression = `√(${currentValue})`;
+                break;
+            case 'log':
+                displayExpression = `log(${currentValue})`;
+                break;
+            case 'ln':
+                displayExpression = `ln(${currentValue})`;
+                break;
+            case 'exp':
+                displayExpression = `exp(${currentValue})`;
+                break;
+            case 'sin':
+                displayExpression = `sin(${currentValue})`;
+                break;
+            case 'cos':
+                displayExpression = `cos(${currentValue})`;
+                break;
+            case 'tan':
+                displayExpression = `tan(${currentValue})`;
+                break;
+            case 'asin':
+                displayExpression = `asin(${currentValue})`;
+                break;
+            case 'acos':
+                displayExpression = `acos(${currentValue})`;
+                break;
+            case 'atan':
+                displayExpression = `atan(${currentValue})`;
+                break;
+            case 'sinh':
+                displayExpression = `sinh(${currentValue})`;
+                break;
+            case 'cosh':
+                displayExpression = `cosh(${currentValue})`;
+                break;
+            case 'tanh':
+                displayExpression = `tanh(${currentValue})`;
+                break;
+            case 'factorial':
+                displayExpression = `${currentValue}!`;
+                break;
+            case 'mod':
+                displayExpression = `(${currentValue}) %`;
+                break;
+            case 'power_of_ten':
+                displayExpression = `10^(${currentValue})`;
+                break;
+            case 'inverse':
+                displayExpression = `1/(${currentValue})`;
+                break;
+            default:
+                return;
+        }
+
+        currentExpression = displayExpression;
+        updateDisplay();
+        executeOperation(operation, value);
+    }
+
+    function executeOperation(operation, a, b = null) {
+        const formData = new FormData();
+        formData.append('operation', operation);
+        formData.append('a', a);
+        if (b !== null) {
+            formData.append('b', b);
+        }
+
+        fetch('/calculate/', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+                currentValue = data.result;
+                resultCalculated = true;
+                updateDisplay();
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function handleEquals() {
+        if (resultCalculated) {
+            currentExpression = currentValue;
+        } else {
+            currentExpression += currentValue;
+        }
+
+        try {
+            const result = eval(currentExpression.replace('^', '**'));
+            currentValue = result.toString();
+            currentExpression = '';
+            resultCalculated = true;
+            updateDisplay();
+        } catch (error) {
+            currentValue = 'Error';
+            updateDisplay();
+        }
+    }
+
+    function handleClear() {
+        currentExpression = '';
+        currentValue = '0';
+        resultCalculated = false;
+        updateDisplay();
+    }
+
+    function handleBackspace() {
+        if (resultCalculated) {
+            currentExpression = '';
+            currentValue = '0';
+            resultCalculated = false;
+        } else {
+            if (currentValue.length > 1) {
+                currentValue = currentValue.slice(0, -1);
+            } else {
+                currentValue = '0';
+            }
+        }
+        updateDisplay();
+    }
+
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const value = button.getAttribute('data-value');
+
+            if (!isNaN(value)) {
+                handleNumber(value);
+            } else if (value === 'equals') {
+                handleEquals();
+            } else if (value === 'clear') {
+                handleClear();
+            } else if (value === 'backspace') {
+                handleBackspace();
+            } else if (['add', 'subtract', 'multiply', 'divide', 'power', 'mod'].includes(value)) {
+                handleOperation(value);
+            } else {
+                handleUnaryOperation(value);
+            }
+        });
+    });
+
+    updateDisplay();
+</script>
+</body>
+</html>
