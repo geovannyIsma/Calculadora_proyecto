@@ -30,16 +30,22 @@ class EstrategiaPotencia:
 
 class EstrategiaRaizCuadrada:
     def ejecutar(self, a):
+        if a < 0:
+            raise ValueError("No se puede calcular la raíz cuadrada de un número negativo")
         return math.sqrt(a)
 
 
 class EstrategiaLogaritmo:
     def ejecutar(self, a, base=10):
+        if a <= 0:
+            raise ValueError("El logaritmo solo está definido para números positivos")
         return math.log(a, base)
 
 
 class EstrategiaLogaritmoNatural:
     def ejecutar(self, a):
+        if a <= 0:
+            raise ValueError("El logaritmo natural solo está definido para números positivos")
         return math.log(a)
 
 
@@ -65,11 +71,15 @@ class EstrategiaTangente:
 
 class EstrategiaArcoseno:
     def ejecutar(self, a):
+        if a < -1 or a > 1:
+            raise ValueError("El arcoseno solo está definido para valores en el rango [-1, 1]")
         return math.degrees(math.asin(a))
 
 
 class EstrategiaArcocoseno:
     def ejecutar(self, a):
+        if a < -1 or a > 1:
+            raise ValueError("El arcocoseno solo está definido para valores en el rango [-1, 1]")
         return math.degrees(math.acos(a))
 
 

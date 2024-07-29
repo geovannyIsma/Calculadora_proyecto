@@ -1,4 +1,4 @@
-from calculadora.factory import  FabricaDeOperaciones
+from calculadora.factory import FabricaDeOperaciones
 
 
 # patrón singleton

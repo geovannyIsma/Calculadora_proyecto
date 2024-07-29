@@ -64,7 +64,7 @@
         <button class="btn bg-blue-500 text-white" data-value="inverse">1/x</button>
         <button class="btn bg-yellow-500 text-white" data-value="backspace">⌫</button>
         <button class="btn bg-red-500 text-white" data-value="clear">C</button>
-        
+
         <!-- Numbers -->
         <button class="btn bg-gray-300 text-gray-800" data-value="7">7</button>
         <button class="btn bg-gray-300 text-gray-800" data-value="8">8</button>
@@ -93,7 +93,11 @@
 
     function updateDisplay() {
         document.getElementById('full-expression').textContent = currentExpression;
-        document.getElementById('current-value').textContent = currentValue;
+        document.getElementById('current-value').textContent = formatNumber(currentValue);
+    }
+    
+    function formatNumber(num) {
+        return new Intl.NumberFormat().format(num);
     }
 
     function handleNumber(number) {
@@ -225,11 +229,22 @@
         })
             .then(response => response.json())
             .then(data => {
-                currentValue = data.result;
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                currentValue = roundNumber(data.result);
                 resultCalculated = true;
                 updateDisplay();
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                currentValue = 'Error';
+                console.error('Error:', error);
+                updateDisplay();
+            });
+    }
+    
+    function roundNumber(num, decimals = 10) {
+        return Number(num.toFixed(decimals));
     }
 
     function handleEquals() {
