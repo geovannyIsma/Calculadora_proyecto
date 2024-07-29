@@ -7,6 +7,26 @@ from calculadora.calculadora import Calculadora
 
 @csrf_exempt
 def calcular(request):
+    """
+    Vista para manejar solicitudes POST y realizar cálculos.
+
+    Esta vista recibe una solicitud POST con los parámetros 'operation', 'a' y opcionalmente 'b'.
+    Realiza el cálculo utilizando la clase Calculadora y devuelve el resultado en formato JSON.
+
+    Parámetros:
+    - request: La solicitud HTTP.
+
+    Retorna:
+    - JsonResponse: Un objeto JSON con el resultado del cálculo o un mensaje de error.
+    - HttpResponse: Una respuesta HTTP con la plantilla 'calculate.html' para solicitudes GET.
+
+    Manejo de errores:
+    - Si los parámetros 'a' o 'b' no son números válidos, devuelve un error JSON con el mensaje 'Entrada no válida'.
+    - Si ocurre un error en el cálculo, devuelve un error JSON con el mensaje del error.
+
+    Decoradores:
+    - @csrf_exempt: Exime esta vista de la verificación CSRF.
+    """
     if request.method == 'POST':
         operacion = request.POST.get('operation')
         a = request.POST.get('a')

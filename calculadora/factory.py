@@ -1,5 +1,20 @@
 from calculadora.strategies import *
 
+"""
+Patron de diseño Factory
+------------------------
+En que consiste?
+El patrón de diseño Factory consiste en definir una interfaz para crear objetos, pero
+dejar que las subclases decidan qué clase instanciar. De esta forma, se delega la creación
+de objetos a las subclases, permitiendo que el código cliente trabaje con la interfaz
+común sin necesidad de conocer la implementación concreta.
+
+En este caso, se implementa el patrón Factory para la calculadora. La clase FabricaDeOperaciones
+tiene un método estático obtener_estrategia que recibe el nombre de una operación y devuelve la
+estrategia correspondiente. De esta forma, se puede obtener la estrategia adecuada para una
+operación sin necesidad de conocer la implementación concreta de cada estrategia.
+"""
+
 
 class FabricaDeOperaciones:
     @staticmethod

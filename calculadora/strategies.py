@@ -1,5 +1,45 @@
 import math
 
+"""
+Patron de diseño Strategy
+--------------------------
+En que consiste?
+El patrón de diseño Strategy consiste en definir una familia de algoritmos,
+encapsular cada uno de ellos y hacerlos intercambiables. De esta forma, el
+algoritmo puede variar independientemente de los clientes que lo utilizan.
+
+En este caso, se implementa el patrón Strategy para la calculadora. Se definen
+diferentes estrategias que representan las operaciones que se pueden realizar
+con la calculadora, como suma, resta, multiplicación, división, etc. Cada una
+de estas estrategias implementa un método ejecutar que realiza la operación
+correspondiente. De esta forma, se puede cambiar la estrategia de la calculadora en tiempo de
+ejecución, permitiendo que el usuario seleccione la operación que desea realizar.
+
+En este caso, se implementan las siguientes estrategias:
+- Suma
+- Resta
+- Multiplicación
+- División
+- Potencia
+- Raíz cuadrada
+- Logaritmo
+- Logaritmo natural
+- Exponencial
+- Seno
+- Coseno
+- Tangente
+- Arcoseno
+- Arcocoseno
+- Arcotangente
+- Seno hiperbólico
+- Coseno hiperbólico
+- Tangente hiperbólica
+- Factorial
+- Módulo
+- Potencia de diez
+- Inversa
+"""
+
 
 class EstrategiaSuma:
     def ejecutar(self, a, b):
