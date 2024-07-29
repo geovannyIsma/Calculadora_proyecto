@@ -1,32 +1,32 @@
-from calculadora.strategies.strategies import *
+from calculadora.strategies import *
 
 
 class FabricaDeOperaciones:
     @staticmethod
     def obtener_estrategia(operacion):
         estrategias = {
-            'add': EstrategiaSuma,
-            'subtract': EstrategiaResta,
-            'multiply': EstrategiaMultiplicacion,
-            'divide': EstrategiaDivision,
-            'power': EstrategiaPotencia,
-            'sqrt': EstrategiaRaizCuadrada,
-            'log': EstrategiaLogaritmo,
-            'ln': EstrategiaLogaritmoNatural,
-            'exp': EstrategiaExponencial,
-            'sin': EstrategiaSeno,
-            'cos': EstrategiaCoseno,
-            'tan': EstrategiaTangente,
-            'asin': EstrategiaArcoseno,
-            'acos': EstrategiaArcocoseno,
-            'atan': EstrategiaArcotangente,
+            'suma': EstrategiaSuma,
+            'resta': EstrategiaResta,
+            'multiplicacion': EstrategiaMultiplicacion,
+            'division': EstrategiaDivision,
+            'potencia': EstrategiaPotencia,
+            'raiz_cuadrada': EstrategiaRaizCuadrada,
+            'logaritmo': EstrategiaLogaritmo,
+            'logaritmo_natural': EstrategiaLogaritmoNatural,
+            'exponencial': EstrategiaExponencial,
+            'seno': EstrategiaSeno,
+            'coseno': EstrategiaCoseno,
+            'tangente': EstrategiaTangente,
+            'arcoseno': EstrategiaArcoseno,
+            'arcocoseno': EstrategiaArcocoseno,
+            'arcotangente': EstrategiaArcotangente,
             'sinh': EstrategiaSinh,
             'cosh': EstrategiaCosh,
             'tanh': EstrategiaTanh,
             'factorial': EstrategiaFactorial,
-            'mod': EstrategiaModulo,
-            'power_of_ten': EstrategiaPotenciaDeDiez,
-            'inverse': EstrategiaInversa,
+            'modulo': EstrategiaModulo,
+            'potencia_de_diez': EstrategiaPotenciaDeDiez,
+            'inversa': EstrategiaInversa,
         }
         if operacion in estrategias:
             return estrategias[operacion]()

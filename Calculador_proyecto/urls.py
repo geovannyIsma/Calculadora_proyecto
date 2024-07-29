@@ -17,9 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from calculadora.views import calculate
+from calculadora.views import calcular
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('calculate/', calculate, name='calculate'),
+    path('calculate/', calcular, name='calculate'),
 ]

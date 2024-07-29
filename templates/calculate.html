@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,181 +43,181 @@
         <div id="current-value">0</div>
     </div>
     <div id="calculator" class="calculator-grid">
-        <!-- Scientific functions -->
-        <button class="btn bg-blue-500 text-white" data-value="sqrt">√</button>
-        <button class="btn bg-blue-500 text-white" data-value="power">^</button>
-        <button class="btn bg-blue-500 text-white" data-value="log">log</button>
-        <button class="btn bg-blue-500 text-white" data-value="ln">ln</button>
-        <button class="btn bg-blue-500 text-white" data-value="exp">exp</button>
-        <button class="btn bg-blue-500 text-white" data-value="sin">sin</button>
-        <button class="btn bg-blue-500 text-white" data-value="cos">cos</button>
-        <button class="btn bg-blue-500 text-white" data-value="tan">tan</button>
-        <button class="btn bg-blue-500 text-white" data-value="asin">asin</button>
-        <button class="btn bg-blue-500 text-white" data-value="acos">acos</button>
-        <button class="btn bg-blue-500 text-white" data-value="atan">atan</button>
+        <!-- Funciones científicas -->
+        <button class="btn bg-blue-500 text-white" data-value="raiz_cuadrada">√</button>
+        <button class="btn bg-blue-500 text-white" data-value="potencia">^</button>
+        <button class="btn bg-blue-500 text-white" data-value="logaritmo">log</button>
+        <button class="btn bg-blue-500 text-white" data-value="logaritmo_natural">ln</button>
+        <button class="btn bg-blue-500 text-white" data-value="exponencial">exp</button>
+        <button class="btn bg-blue-500 text-white" data-value="seno">sin</button>
+        <button class="btn bg-blue-500 text-white" data-value="coseno">cos</button>
+        <button class="btn bg-blue-500 text-white" data-value="tangente">tan</button>
+        <button class="btn bg-blue-500 text-white" data-value="arcoseno">asin</button>
+        <button class="btn bg-blue-500 text-white" data-value="arcocoseno">acos</button>
+        <button class="btn bg-blue-500 text-white" data-value="arcotangente">atan</button>
         <button class="btn bg-blue-500 text-white" data-value="sinh">sinh</button>
         <button class="btn bg-blue-500 text-white" data-value="cosh">cosh</button>
         <button class="btn bg-blue-500 text-white" data-value="tanh">tanh</button>
         <button class="btn bg-blue-500 text-white" data-value="factorial">n!</button>
-        <button class="btn bg-blue-500 text-white" data-value="mod">%</button>
-        <button class="btn bg-blue-500 text-white" data-value="power_of_ten">10^x</button>
-        <button class="btn bg-blue-500 text-white" data-value="inverse">1/x</button>
-        <button class="btn bg-yellow-500 text-white" data-value="backspace">⌫</button>
-        <button class="btn bg-red-500 text-white" data-value="clear">C</button>
+        <button class="btn bg-blue-500 text-white" data-value="modulo">%</button>
+        <button class="btn bg-blue-500 text-white" data-value="potencia_de_diez">10^x</button>
+        <button class="btn bg-blue-500 text-white" data-value="inversa">1/x</button>
+        <button class="btn bg-yellow-500 text-white" data-value="borrar">⌫</button>
+        <button class="btn bg-red-500 text-white" data-value="limpiar">C</button>
 
-        <!-- Numbers -->
+        <!-- Números -->
         <button class="btn bg-gray-300 text-gray-800" data-value="7">7</button>
         <button class="btn bg-gray-300 text-gray-800" data-value="8">8</button>
         <button class="btn bg-gray-300 text-gray-800" data-value="9">9</button>
-        <button class="btn bg-orange-500 text-white" data-value="multiply">*</button>
-        <button class="btn bg-orange-500 text-white" data-value="divide">/</button>
+        <button class="btn bg-orange-500 text-white" data-value="multiplicacion">*</button>
+        <button class="btn bg-orange-500 text-white" data-value="division">/</button>
         <button class="btn bg-gray-300 text-gray-800" data-value="4">4</button>
         <button class="btn bg-gray-300 text-gray-800" data-value="5">5</button>
         <button class="btn bg-gray-300 text-gray-800" data-value="6">6</button>
-        <button class="btn bg-orange-500 text-white" data-value="add">+</button>
-        <button class="btn bg-orange-500 text-white" data-value="subtract">-</button>
+        <button class="btn bg-orange-500 text-white" data-value="suma">+</button>
+        <button class="btn bg-orange-500 text-white" data-value="resta">-</button>
         <button class="btn bg-gray-300 text-gray-800" data-value="1">1</button>
         <button class="btn bg-gray-300 text-gray-800" data-value="2">2</button>
         <button class="btn bg-gray-300 text-gray-800" data-value="3">3</button>
-        <button class="btn bg-green-500 text-white span-two" data-value="equals">=</button>
+        <button class="btn bg-green-500 text-white span-two" data-value="igual">=</button>
         <button class="btn bg-gray-300 text-gray-800 span-two" data-value="0">0</button>
-        <button class="btn bg-gray-300 text-gray-800" data-value="dot">.</button>
+        <button class="btn bg-gray-300 text-gray-800" data-value="punto">.</button>
     </div>
     <div id="result" class="mt-4 text-center text-xl"></div>
 </div>
 
 <script>
-    let currentExpression = '';
-    let currentValue = '0';
-    let resultCalculated = false;
+    let expresionActual = '';
+    let valorActual = '0';
+    let resultadoCalculado = false;
 
-    function updateDisplay() {
-        document.getElementById('full-expression').textContent = currentExpression;
-        document.getElementById('current-value').textContent = formatNumber(currentValue);
+    function actualizarPantalla() {
+        document.getElementById('full-expression').textContent = expresionActual;
+        document.getElementById('current-value').textContent = formatarNumero(valorActual);
     }
-    
-    function formatNumber(num) {
+
+    function formatarNumero(num) {
         return new Intl.NumberFormat().format(num);
     }
 
-    function handleNumber(number) {
-        if (resultCalculated) {
-            currentExpression = '';
-            currentValue = number;
-            resultCalculated = false;
+    function manejarNumero(numero) {
+        if (resultadoCalculado) {
+            expresionActual = '';
+            valorActual = numero;
+            resultadoCalculado = false;
         } else {
-            if (currentValue === '0') {
-                currentValue = number;
+            if (valorActual === '0') {
+                valorActual = numero;
             } else {
-                currentValue += number;
+                valorActual += numero;
             }
         }
-        updateDisplay();
+        actualizarPantalla();
     }
 
-    function handleOperation(operation) {
-        if (resultCalculated) {
-            currentExpression = currentValue;
-            resultCalculated = false;
+    function manejarOperacion(operacion) {
+        if (resultadoCalculado) {
+            expresionActual = valorActual;
+            resultadoCalculado = false;
         } else {
-            currentExpression += currentValue;
+            expresionActual += valorActual;
         }
 
-        switch (operation) {
-            case 'add':
-                currentExpression += ' + ';
+        switch (operacion) {
+            case 'suma':
+                expresionActual += ' + ';
                 break;
-            case 'subtract':
-                currentExpression += ' - ';
+            case 'resta':
+                expresionActual += ' - ';
                 break;
-            case 'multiply':
-                currentExpression += ' * ';
+            case 'multiplicacion':
+                expresionActual += ' * ';
                 break;
-            case 'divide':
-                currentExpression += ' / ';
+            case 'division':
+                expresionActual += ' / ';
                 break;
-            case 'power':
-                currentExpression += ' ^ ';
+            case 'potencia':
+                expresionActual += ' ^ ';
                 break;
-            case 'mod':
-                currentExpression += ' % ';
+            case 'modulo':
+                expresionActual += ' % ';
                 break;
             default:
                 return;
         }
 
-        currentValue = '0';
-        updateDisplay();
+        valorActual = '0';
+        actualizarPantalla();
     }
 
-    function handleUnaryOperation(operation) {
-        let value = parseFloat(currentValue);
-        let displayExpression = '';
+    function manejarOperacionUnaria(operacion) {
+        let valor = parseFloat(valorActual);
+        let expresionDisplay = '';
 
-        switch (operation) {
-            case 'sqrt':
-                displayExpression = `√(${currentValue})`;
+        switch (operacion) {
+            case 'raiz_cuadrada':
+                expresionDisplay = `√(${valorActual})`;
                 break;
-            case 'log':
-                displayExpression = `log(${currentValue})`;
+            case 'logaritmo':
+                expresionDisplay = `log(${valorActual})`;
                 break;
-            case 'ln':
-                displayExpression = `ln(${currentValue})`;
+            case 'logaritmo_natural':
+                expresionDisplay = `ln(${valorActual})`;
                 break;
-            case 'exp':
-                displayExpression = `exp(${currentValue})`;
+            case 'exponencial':
+                expresionDisplay = `exp(${valorActual})`;
                 break;
-            case 'sin':
-                displayExpression = `sin(${currentValue})`;
+            case 'seno':
+                expresionDisplay = `sin(${valorActual})`;
                 break;
-            case 'cos':
-                displayExpression = `cos(${currentValue})`;
+            case 'coseno':
+                expresionDisplay = `cos(${valorActual})`;
                 break;
-            case 'tan':
-                displayExpression = `tan(${currentValue})`;
+            case 'tangente':
+                expresionDisplay = `tan(${valorActual})`;
                 break;
-            case 'asin':
-                displayExpression = `asin(${currentValue})`;
+            case 'arcoseno':
+                expresionDisplay = `asin(${valorActual})`;
                 break;
-            case 'acos':
-                displayExpression = `acos(${currentValue})`;
+            case 'arcocoseno':
+                expresionDisplay = `acos(${valorActual})`;
                 break;
-            case 'atan':
-                displayExpression = `atan(${currentValue})`;
+            case 'arcotangente':
+                expresionDisplay = `atan(${valorActual})`;
                 break;
             case 'sinh':
-                displayExpression = `sinh(${currentValue})`;
+                expresionDisplay = `sinh(${valorActual})`;
                 break;
             case 'cosh':
-                displayExpression = `cosh(${currentValue})`;
+                expresionDisplay = `cosh(${valorActual})`;
                 break;
             case 'tanh':
-                displayExpression = `tanh(${currentValue})`;
+                expresionDisplay = `tanh(${valorActual})`;
                 break;
             case 'factorial':
-                displayExpression = `${currentValue}!`;
+                expresionDisplay = `${valorActual}!`;
                 break;
-            case 'mod':
-                displayExpression = `(${currentValue}) %`;
+            case 'modulo':
+                expresionDisplay = `(${valorActual}) %`;
                 break;
-            case 'power_of_ten':
-                displayExpression = `10^(${currentValue})`;
+            case 'potencia_de_diez':
+                expresionDisplay = `10^(${valorActual})`;
                 break;
-            case 'inverse':
-                displayExpression = `1/(${currentValue})`;
+            case 'inversa':
+                expresionDisplay = `1/(${valorActual})`;
                 break;
             default:
                 return;
         }
 
-        currentExpression = displayExpression;
-        updateDisplay();
-        executeOperation(operation, value);
+        expresionActual = expresionDisplay;
+        actualizarPantalla();
+        ejecutarOperacion(operacion, valor);
     }
 
-    function executeOperation(operation, a, b = null) {
+    function ejecutarOperacion(operacion, a, b = null) {
         const formData = new FormData();
-        formData.append('operation', operation);
+        formData.append('operation', operacion);
         formData.append('a', a);
         if (b !== null) {
             formData.append('b', b);
@@ -232,83 +232,83 @@
                 if (data.error) {
                     throw new Error(data.error);
                 }
-                currentValue = roundNumber(data.result);
-                resultCalculated = true;
-                updateDisplay();
+                valorActual = redondearNumero(data.result);
+                resultadoCalculado = true;
+                actualizarPantalla();
             })
             .catch(error => {
-                currentValue = 'Error';
+                valorActual = 'Error';
                 console.error('Error:', error);
-                updateDisplay();
+                actualizarPantalla();
             });
     }
-    
-    function roundNumber(num, decimals = 10) {
-        return Number(num.toFixed(decimals));
+
+    function redondearNumero(num, decimales = 10) {
+        return Number(num.toFixed(decimales));
     }
 
-    function handleEquals() {
-        if (resultCalculated) {
-            currentExpression = currentValue;
+    function manejarIgual() {
+        if (resultadoCalculado) {
+            expresionActual = valorActual;
         } else {
-            currentExpression += currentValue;
+            expresionActual += valorActual;
         }
 
         try {
-            const result = eval(currentExpression.replace('^', '**'));
-            currentValue = result.toString();
-            currentExpression = '';
-            resultCalculated = true;
-            updateDisplay();
+            const resultado = eval(expresionActual.replace('^', '**'));
+            valorActual = resultado.toString();
+            expresionActual = '';
+            resultadoCalculado = true;
+            actualizarPantalla();
         } catch (error) {
-            currentValue = 'Error';
-            updateDisplay();
+            valorActual = 'Error';
+            actualizarPantalla();
         }
     }
 
-    function handleClear() {
-        currentExpression = '';
-        currentValue = '0';
-        resultCalculated = false;
-        updateDisplay();
+    function manejarLimpiar() {
+        expresionActual = '';
+        valorActual = '0';
+        resultadoCalculado = false;
+        actualizarPantalla();
     }
 
-    function handleBackspace() {
-        if (resultCalculated) {
-            currentExpression = '';
-            currentValue = '0';
-            resultCalculated = false;
+    function manejarBorrar() {
+        if (resultadoCalculado) {
+            expresionActual = '';
+            valorActual = '0';
+            resultadoCalculado = false;
         } else {
-            if (currentValue.length > 1) {
-                currentValue = currentValue.slice(0, -1);
+            if (valorActual.length > 1) {
+                valorActual = valorActual.slice(0, -1);
             } else {
-                currentValue = '0';
+                valorActual = '0';
             }
         }
-        updateDisplay();
+        actualizarPantalla();
     }
 
     document.querySelectorAll('.btn').forEach(button => {
         button.addEventListener('click', () => {
-            const value = button.getAttribute('data-value');
+            const valor = button.getAttribute('data-value');
 
-            if (!isNaN(value)) {
-                handleNumber(value);
-            } else if (value === 'equals') {
-                handleEquals();
-            } else if (value === 'clear') {
-                handleClear();
-            } else if (value === 'backspace') {
-                handleBackspace();
-            } else if (['add', 'subtract', 'multiply', 'divide', 'power', 'mod'].includes(value)) {
-                handleOperation(value);
+            if (!isNaN(valor)) {
+                manejarNumero(valor);
+            } else if (valor === 'igual') {
+                manejarIgual();
+            } else if (valor === 'limpiar') {
+                manejarLimpiar();
+            } else if (valor === 'borrar') {
+                manejarBorrar();
+            } else if (['suma', 'resta', 'multiplicacion', 'division', 'potencia', 'modulo'].includes(valor)) {
+                manejarOperacion(valor);
             } else {
-                handleUnaryOperation(value);
+                manejarOperacionUnaria(valor);
             }
         });
     });
 
-    updateDisplay();
+    actualizarPantalla();
 </script>
 </body>
 </html>

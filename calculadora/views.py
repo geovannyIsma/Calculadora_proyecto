@@ -6,9 +6,9 @@ from calculadora.calculadora import Calculadora
 
 
 @csrf_exempt
-def calculate(request):
+def calcular(request):
     if request.method == 'POST':
-        operation = request.POST.get('operation')
+        operacion = request.POST.get('operation')
         a = request.POST.get('a')
         b = request.POST.get('b', None)
 
@@ -17,15 +17,15 @@ def calculate(request):
             if b is not None:
                 b = float(b)
         except ValueError:
-            return JsonResponse({'error': 'Invalid input'}, status=400)
+            return JsonResponse({'error': 'Entrada no válida'}, status=400)
 
-        calculator = Calculadora()
+        calculadora = Calculadora()
         try:
             if b is not None:
-                result = calculator.ejecutar(operation, a, b)
+                resultado = calculadora.ejecutar(operacion, a, b)
             else:
-                result = calculator.ejecutar(operation, a)
-            return JsonResponse({'result': result})
+                resultado = calculadora.ejecutar(operacion, a)
+            return JsonResponse({'result': resultado})
         except ValueError as e:
             return JsonResponse({'error': str(e)}, status=400)
     return render(request, 'calculate.html')

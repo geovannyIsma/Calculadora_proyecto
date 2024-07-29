@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="094897d3-f563-48b5-93f5-5842628e7764" name="Changes" comment="initial commit">
+    <list default="true" id="094897d3-f563-48b5-93f5-5842628e7764" name="Changes" comment="formato de numeros">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculadora/calculadora.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculadora/calculadora.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculadora/strategies/strategies.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculadora/strategies/strategies.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/calculate.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/calculate.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +107,8 @@
       <workItem from="1722200119462" duration="722000" />
       <workItem from="1722200883754" duration="6000" />
       <workItem from="1722217406940" duration="3752000" />
+      <workItem from="1722267269889" duration="430000" />
+      <workItem from="1722268105406" duration="202000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
