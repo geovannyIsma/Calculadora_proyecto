@@ -15,29 +15,14 @@ de estas estrategias implementa un método ejecutar que realiza la operación
 correspondiente. De esta forma, se puede cambiar la estrategia de la calculadora en tiempo de
 ejecución, permitiendo que el usuario seleccione la operación que desea realizar.
 
-En este caso, se implementan las siguientes estrategias:
-- Suma
-- Resta
-- Multiplicación
-- División
-- Potencia
-- Raíz cuadrada
-- Logaritmo
-- Logaritmo natural
-- Exponencial
-- Seno
-- Coseno
-- Tangente
-- Arcoseno
-- Arcocoseno
-- Arcotangente
-- Seno hiperbólico
-- Coseno hiperbólico
-- Tangente hiperbólica
-- Factorial
-- Módulo
-- Potencia de diez
-- Inversa
+por que se usa?
+El patrón Strategy se utiliza en este caso para permitir que la calculadora realice
+diferentes operaciones matemáticas de forma dinámica. Cada estrategia representa una
+operación matemática concreta, y el usuario puede seleccionar la estrategia que desea
+utilizar en cada momento. De esta forma, se separa la lógica de cálculo de la lógica de la
+interfaz de usuario, lo que facilita la extensión y mantenimiento del código.
+
+Se implementan las siguientes estrategias:
 """
 
 

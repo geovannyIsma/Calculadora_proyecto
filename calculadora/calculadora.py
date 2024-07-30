@@ -17,7 +17,13 @@ Además, la clase Calculadora tiene un método ejecutar que recibe una operació
 argumentos y delega la ejecución de la operación a la estrategia correspondiente. La clase
 FabricaDeOperaciones se encarga de obtener la estrategia adecuada para la operación solicitada.
 
+por que se usa?
+El patrón Singleton se utiliza en este caso para garantizar que solo exista una instancia de la
+calculadora en todo el sistema. De esta forma, se evita la creación de múltiples instancias de la
+calculadora y se asegura que todas las operaciones se realicen sobre la misma instancia.
 """
+
+
 class Calculadora:
     _instancia = None
 

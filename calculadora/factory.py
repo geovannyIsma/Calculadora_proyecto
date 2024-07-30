@@ -9,6 +9,7 @@ dejar que las subclases decidan qué clase instanciar. De esta forma, se delega 
 de objetos a las subclases, permitiendo que el código cliente trabaje con la interfaz
 común sin necesidad de conocer la implementación concreta.
 
+por que se usa?
 En este caso, se implementa el patrón Factory para la calculadora. La clase FabricaDeOperaciones
 tiene un método estático obtener_estrategia que recibe el nombre de una operación y devuelve la
 estrategia correspondiente. De esta forma, se puede obtener la estrategia adecuada para una
